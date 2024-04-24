@@ -1,0 +1,76 @@
+(MemberDao.java:92) - doReadFile()
+(MemberDao.java:106) - IOException: member.json (지정된 파일을 찾을 수 없습니다)
+(MemberDao.java:109) - listBox.size() :0
+(MemberDao.java:27) - member count: 0
+(MemberDao.java:86) - doSaveFile count3
+(Main.java:90) - doSave()
+(MemberDao.java:48) - flag :1
+(Main.java:94) - -----------
+(Main.java:95) - 단건 등록 성공!
+(Main.java:96) - -----------
+(MemberDao.java:86) - doSaveFile count4
+(MemberDao.java:92) - doReadFile()
+(MemberDao.java:92) - doReadFile()
+(MemberDao.java:92) - doReadFile()
+(MemberDao.java:109) - listBox.size() :4
+(MemberDao.java:27) - member count: 4
+(MemberDao.java:86) - doSaveFile count3
+(Main.java:103) - doDelete()
+(Main.java:110) - 단건 삭제 실패!
+(MemberDao.java:86) - doSaveFile count3
+(MemberDao.java:101) - doReadFile()
+(MemberDao.java:118) - listBox.size() :3
+(MemberDao.java:27) - member count: 3
+(MemberDao.java:95) - doSaveFile count3
+(Main.java:103) - doDelete()
+(MemberDao.java:68) - flag : 1
+(Main.java:106) - -----------
+(Main.java:107) - 단건 삭제 성공!
+(Main.java:108) - -----------
+(MemberDao.java:95) - doSaveFile count2
+(MemberDao.java:108) - doReadFile()
+(MemberDao.java:125) - listBox.size() :2
+(MemberDao.java:27) - member count: 2
+(MemberDao.java:102) - doSaveFile count3
+(Main.java:104) - doDelete()
+(MemberDao.java:68) - flag : 1
+(Main.java:107) - -----------
+(Main.java:108) - 단건 삭제 성공!
+(Main.java:109) - -----------
+(MemberDao.java:102) - doSaveFile count2
+(MemberDao.java:108) - doReadFile()
+(MemberDao.java:125) - listBox.size() :2
+(MemberDao.java:27) - member count: 2
+(MemberDao.java:102) - doSaveFile count3
+(Main.java:117) - doSelectOne()
+(MemberDao.java:82) - memberDTO : MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:121) - -----------
+(Main.java:122) - 단건 조회 성공!
+(Main.java:123) - -----------
+(Main.java:124) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:125) - -----------
+(MemberDao.java:102) - doSaveFile count3
+(MemberDao.java:108) - doReadFile()
+(MemberDao.java:125) - listBox.size() :3
+(MemberDao.java:27) - member count: 3
+(MemberDao.java:102) - doSaveFile count3
+(Main.java:117) - doSelectOne()
+(MemberDao.java:82) - memberDTO : MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:121) - -----------
+(Main.java:122) - 단건 조회 성공!
+(Main.java:123) - -----------
+(Main.java:124) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:125) - -----------
+(MemberDao.java:102) - doSaveFile count3
+(MemberDao.java:108) - doReadFile()
+(MemberDao.java:125) - listBox.size() :3
+(MemberDao.java:27) - member count: 3
+(MemberDao.java:102) - doSaveFile count3
+(Main.java:117) - doSelectOne()
+(MemberDao.java:82) - memberDTO : MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:121) - -----------
+(Main.java:122) - 단건 조회 성공!
+(Main.java:123) - -----------
+(Main.java:124) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:125) - -----------
+(MemberDao.java:102) - doSaveFile count3

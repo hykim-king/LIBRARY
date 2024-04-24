@@ -1,0 +1,387 @@
+(MemberDao.java:137) - doReadFile()
+(MemberDao.java:154) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:131) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:131) - doSaveFile count3
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:124) - doUpdate() :
+(MemberDao.java:100) - flag : 0
+(Main.java:132) - -----------
+(Main.java:133) - 수정 실패!
+(Main.java:134) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:124) - doUpdate() :
+(MemberDao.java:100) - flag : 0
+(Main.java:132) - -----------
+(Main.java:133) - 수정 실패!
+(Main.java:134) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:80) - doSave()
+(Main.java:89) - 단건 등록 실패! flag:2
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:123) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:128) - -----------
+(Main.java:129) - 수정성공!
+(Main.java:130) - -----------
+(MemberDao.java:140) - doReadFile()
+(MemberDao.java:157) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:134) - doSaveFile count3
+(MemberDao.java:134) - doSaveFile count3
+(Main.java:79) - doUpdate() :
+(MemberDao.java:100) - flag : 1
+(MemberDao.java:74) - flag :1
+(Main.java:84) - -----------
+(Main.java:85) - 수정성공!
+(Main.java:86) - -----------
+(MemberDao.java:151) - doReadFile()
+(MemberDao.java:169) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:145) - doSaveFile count3
+(Main.java:82) - doUpdate() :
+(MemberDao.java:111) - flag : 1
+(MemberDao.java:88) - flag :1
+(Main.java:87) - -----------
+(Main.java:88) - 수정성공!
+(Main.java:89) - -----------
+(MemberDao.java:145) - doSaveFile count3
+(MemberDao.java:151) - doReadFile()
+(MemberDao.java:169) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:145) - doSaveFile count3
+(Main.java:98) - doRetrieve
+(MemberDao.java:151) - doReadFile()
+(MemberDao.java:169) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:145) - doSaveFile count3
+(Main.java:98) - doRetrieve
+(MemberDao.java:151) - doReadFile()
+(MemberDao.java:169) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:145) - doSaveFile count3
+(Main.java:98) - doRetrieve
+(MemberDao.java:151) - doReadFile()
+(MemberDao.java:169) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:145) - doSaveFile count3
+(Main.java:99) - doRetrieve
+(Main.java:103) - -----------
+(Main.java:104) - 목록조회 성공!
+(Main.java:105) - -----------
+(Main.java:113) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:113) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:113) - MemberDTO [memberId=james03, name=이상무03, passwd=a4321, email=james03@naver.com, cellphone=010-1234-5680, regDate=2024-04-19, regId=admin]
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:120) - doRetrieveName()
+(Main.java:100) - doRetrieve
+(Main.java:104) - -----------
+(Main.java:105) - 목록조회 성공!
+(Main.java:106) - -----------
+(Main.java:114) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:114) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:114) - MemberDTO [memberId=james03, name=이상무03, passwd=a4321, email=james03@naver.com, cellphone=010-1234-5680, regDate=2024-04-19, regId=admin]
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:120) - doRetrieveName()
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:125) - doRetrieveName()
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:121) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:121) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:121) - MemberDTO [memberId=james03, name=이상무03, passwd=a4321, email=james03@naver.com, cellphone=010-1234-5680, regDate=2024-04-19, regId=admin]
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:121) - MemberDTO [memberId=james01, name=이상무01, passwd=a4321, email=james01@naver.com, cellphone=010-1234-5678, regDate=2024-04-19, regId=admin]
+(Main.java:121) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:121) - MemberDTO [memberId=james03, name=이상무03, passwd=a4321, email=james03@naver.com, cellphone=010-1234-5680, regDate=2024-04-19, regId=admin]
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:162) - doReadFile()
+(MemberDao.java:180) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:156) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:121) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:121) - MemberDTO [memberId=james02, name=이상무02, passwd=a4321, email=james02@naver.com, cellphone=010-1234-5679, regDate=2024-04-19, regId=admin]
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
+(MemberDao.java:168) - doReadFile()
+(MemberDao.java:186) - listBox.size() :3
+(MemberDao.java:26) - member count: 3
+(MemberDao.java:162) - doSaveFile count3
+(Main.java:126) - doRetrieveName()
+(Main.java:40) - doSave()
+(Main.java:49) - 단건 등록 실패! flag:2
