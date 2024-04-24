@@ -6,7 +6,7 @@ import com.pcwk.ehr.cmn.PLog;
 
 public class Main implements PLog{
 	//test
-	
+	//test2
 	BookDTO dto;
 
 	
