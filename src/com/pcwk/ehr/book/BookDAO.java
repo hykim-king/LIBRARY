@@ -5,13 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -81,7 +80,8 @@ public class BookDAO implements WorkDiv<BookDTO> {
 		
 		if(div.equals("1")) {
 			for(BookDTO book : this.list) {
-				sb.append("도서 이름: "+book.getBookName()+" / 저자 : "+ book.getAuthor()+"\n");
+				String output = String.format("도서 이름: %-40s \t\t\t\t\t 저자: %-20s\n", book.getBookName(), book.getAuthor());
+				sb.append(output);
 			}
 		}
 		
@@ -102,7 +102,7 @@ public class BookDAO implements WorkDiv<BookDTO> {
 		if(div.equals("3")) { //저자 이름 검색
 			for(BookDTO book : this.list) {
 				if(book.getAuthor().startsWith(search)) {
-					sb.append("도서 이름: "+book.getBookName()+" / 저자 : "+ book.getAuthor()+"\n");
+					String output = String.format("도서 이름: %-20s  /t //// 저자: %-20s\n", book.getBookName(), book.getAuthor());
 				}
 			}
 		}
@@ -114,7 +114,7 @@ public class BookDAO implements WorkDiv<BookDTO> {
 	@Override
 	public int doSaveFile() {
 		int count = 0;
-		//PrettyPrinting된 Json생성	
+		//PrettyPrinting된 Json생성
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		try(FileWriter fw = new FileWriter(FILE_NAME)){
 			
@@ -180,9 +180,77 @@ public class BookDAO implements WorkDiv<BookDTO> {
 		return list;
 	}
 
-	public int addBook(Book book) {
+	public int addBook(BookDTO book) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	
+	
+	//-----------------------------------------------------------------
+	//-----------------------------------------------------------------
+	//-----------------------------------------------------------------
+	//-----------------------------------------------------------------
+	
+	
+	private static List<BookDTO> userDatabase;
+	
+
+    public BookDAO() {
+        userDatabase = new ArrayList<>();
+    }
+
+    // 사용자 추가 메서드
+    public void addMember(BookDTO user) {
+        userDatabase.add(user);
+    }
+
+    // 사용자 아이디 존재 여부 확인 메서드
+    public boolean checkUserExistence(String userID) {
+        for (BookDTO user : userDatabase) {
+            if (user.getMemberId().equals(userID)) {
+                return true; // 아이디가 존재하면 true 반환
+            }
+        }
+        return false; // 아이디가 존재하지 않으면 false 반환
+    }
+
+    // 비밀번호 확인 메서드
+    public boolean isPasswordCorrect(String userID, String password) {
+        for (BookDTO user : userDatabase) {
+            if (user.getMemberId().equals(userID)) {
+                return user.getPassword().equals(password); // 아이디가 일치하는 사용자의 비밀번호 확인
+            }
+        }
+        return false; // 아이디가 존재하지 않으면 false 반환
+    }
+
+    public boolean isMemberID(String username) {
+        for (BookDTO user : userDatabase) {
+            if (user.getMemberId().equals(username)) {
+                return true; // 아이디가 존재하면 true 반환
+            }
+        }
+        return false; // 아이디가 존재하지 않으면 false 반환
+    }
+    
+    
+  //★★★관리자모드
+    public boolean deleteMember(String memberId) {
+        Iterator<BookDTO> iterator = userDatabase.iterator();
+        while (iterator.hasNext()) {
+        	BookDTO member = iterator.next();
+            if (member.getMemberId().equals(memberId)) {
+                iterator.remove();
+                return true; 
+            }
+        }
+        return false; 
+    }
+	public static List<BookDTO> getAllMembers() {
+		return userDatabase;
+	}
+	
 
 }

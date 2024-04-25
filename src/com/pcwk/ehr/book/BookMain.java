@@ -1,17 +1,20 @@
 package com.pcwk.ehr.book;
-
-import java.util.List;
 import java.util.Scanner;
+
+
+import com.pcwk.ehr.book.BookDAO;
+import com.pcwk.ehr.book.BookDTO;
 
 public class BookMain {
     private static BookDAO bookDAO = new BookDAO();
     private static Scanner scanner = new Scanner(System.in);
-    private static LibMemDAO memberDAO = new LibMemDAO();
+    private static BookDAO memberDAO = new BookDAO();
 
     public static void main(String[] args) {
     	boolean isLoggedIn = false;
 
         while (!isLoggedIn) {
+        	
             printLoginMenu();
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -24,13 +27,12 @@ public class BookMain {
                 	isLoggedIn = login(); 
                     break;
                 case 3:
-                	adminMode(memberDAO, scanner);
-                    break;
-                case 4:
-                    System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+                    System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
                     System.exit(0);
+                case 4:
+                	adminMode(bookDAO, scanner);
                 default:
-                    System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                   
             }
         }
         
@@ -53,89 +55,110 @@ public class BookMain {
                     searchBooksByAuthor();
                     break;
                 case 4:
-                	System.out.println("ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.");
+                	//ì±…ëŒ€ì—¬
+                	
+                	break;
+                case 5:
+                	//ì±… ë°˜ë‚©
+                	
+                	break;
+                case 6:
+                	System.out.println("\ní”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                     exit = true;
                     break;
                 default:
-                    System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                    System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
             }
         }
     }
     
-    private static void printLoginMenu() {
-        System.out.println("\n=== µµ¼­ °ü¸® ÇÁ·Î±×·¥ ===");
-        System.out.println("1. È¸¿ø°¡ÀÔ");
-        System.out.println("2. ·Î±×ÀÎ");
-        System.out.println("3. °ü¸®ÀÚ ¸ğµå");
-        System.out.println("4. ÇÁ·Î±×·¥ Á¾·á");
-        System.out.print("¼±ÅÃ: ");
-    }
-    
-    public static void registerMember(LibMemDAO memberDAO, Scanner scanner) {
-        while (true) {
-        	System.out.println("\n¢İÈ¸¿ø°¡ÀÔ¢İ");
-            System.out.print("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ");
-            String name = scanner.nextLine();
+    public static boolean login() {
+        System.out.println("\nâ™¬ë¡œê·¸ì¸â™¬");
 
-            System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-            String userID = scanner.nextLine();
-
-            if (memberDAO.checkUserExistence(userID)) {
-                System.out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù. ´Ù¸¥ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-            } else {
-                System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-                String password1 = scanner.nextLine();
-
-                System.out.print("ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÇÑ¹ø ÀÔ·ÂÇÏ¼¼¿ä: ");
-                String password2 = scanner.nextLine();
-
-                if (!password1.equals(password2)) {
-                    System.out.println("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
-                } else {
-                    LibMemDTO user = new LibMemDTO(name, userID, password1);
-                    memberDAO.addMember(user);
-                    
-                    System.out.println("¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡");
-                    System.out.printf("    %s´Ô µµ¼­°ü È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.    \n",name);
-                    System.out.println("¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡ \n");
-
-                    break;
-                }
-            }
-        }
-    }
-
-    
-    private static boolean login() {
-        System.out.println("\n¢İ·Î±×ÀÎ¢İ");
-
-        System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String username = scanner.nextLine();
 
-        System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String password = scanner.nextLine();
 
         if (memberDAO.isMemberID(username) && memberDAO.isPasswordCorrect(username, password)) {
-            System.out.println("·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+            System.out.println("ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
             return true;
-        } else {
-            System.out.println(" *¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.* ");
+            
+        
+        }else if(!memberDAO.isMemberID(username)){
+        	
+        	 System.out.println("  â•³ ë¹„íšŒì›ì€ ì´ìš© ë¶ˆê°€í•©ë‹ˆë‹¤  â•³\n ");
+        	 
+        	// íšŒì›ì´ ì•„ë‹Œ ê²½ìš° ë©”ì‹œì§€ ì¶œë ¥
+        }else {
+        	
+            System.out.println(" *ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”.*\n");
+           
+            }
+		return false;
         }
 
-        return false;
+	private static void printLoginMenu() {
+		System.out.println("");
+    	System.out.println("â”Œâ”€â”€â”€â”€â”€ì•ˆë…•í•˜ì„¸ìš” LIB ë„ì„œê´€ì…ë‹ˆë‹¤.â”€â”€â”€â”€â”€â”€â”");
+		System.out.println("  1. íšŒì›ê°€ì… ");
+		System.out.println("  2. ë¡œê·¸ì¸ (ë„ì„œê´€ ì´ìš©í•˜ê¸°)");
+		System.out.println("  3. ì¢…ë£Œí•˜ê¸°");
+		System.out.println("  4. ê´€ë¦¬ì ëª¨ë“œ");
+		System.out.println("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
+		System.out.print("ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”!  â˜  ");
+		
     }
     
-  //¡Ú¡Ú¡Ú°ü¸®ÀÚ¸ğµå¡Ú¡Ú¡Ú
-    public static void adminMode(LibMemDAO memberDAO, Scanner scanner) {
-        System.out.print("\n°ü¸®ÀÚ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+  
+
+    
+    public static void registerMember(BookDAO memberDAO, Scanner scanner) {
+        while (true) {
+        	
+        	System.out.println("\nâ™¬íšŒì›ê°€ì…â™¬");
+            System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+            String name = scanner.nextLine();
+
+            System.out.print("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            String userID = scanner.nextLine();
+
+            while (true) {
+                System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+                String password1 = scanner.nextLine();
+
+                System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í•œë²ˆ ì…ë ¥í•˜ì„¸ìš”: ");
+                String password2 = scanner.nextLine();
+
+                if (!password1.equals(password2)) {
+                    System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.\n");
+                } else {
+                	BookDTO user = new BookDTO(name, userID, password1);
+                    memberDAO.addMember(user);
+                    
+                    System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
+                    System.out.printf("    %së‹˜ ë„ì„œê´€ íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.    \n", name);
+                    System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ \n");
+                    
+                    return;
+                }
+            }
+            }
+        }
+    
+    
+  //â˜…â˜…â˜…ê´€ë¦¬ìëª¨ë“œâ˜…â˜…â˜…
+    public static void adminMode(BookDAO memberDAO, Scanner scanner) {
+        System.out.print("\nê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String adminPassword = scanner.nextLine();
 
-        // °ü¸®ÀÚ ºñ¹Ğ¹øÈ£°¡ ¸ÂÀ¸¸é
+        // ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ê°€ ë§ìœ¼ë©´
         if (adminPassword.equals("abc123")) {
-            System.out.println("°ü¸®ÀÚ ¸ğµå·Î Á¢¼ÓÇÏ¿´½À´Ï´Ù.");
-            System.out.println("1. È¸¿ø ÀüÃ¼ ¸ñ·Ï Ãâ·Â");
-            System.out.println("2. È¸¿ø »èÁ¦");
-            System.out.print("¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä!  ¢Ñ  ");
+            System.out.println("\nê´€ë¦¬ì ëª¨ë“œë¡œ ì ‘ì†í•˜ì˜€ìŠµë‹ˆë‹¤.");
+            System.out.println("1. íšŒì› ì „ì²´ ëª©ë¡ ì¶œë ¥");
+            System.out.println("2. íšŒì› ì‚­ì œ");
+            System.out.print("ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”!  â˜  ");
             int adminChoice = scanner.nextInt();
             scanner.nextLine();
 
@@ -147,71 +170,81 @@ public class BookMain {
                     deleteMember(memberDAO, scanner);
                     break;
                 default:
-                    System.out.println("Àß¸øµÈ ¼±ÅÃÀÔ´Ï´Ù.");
+                    System.out.println("ì˜ëª»ëœ ì„ íƒì…ë‹ˆë‹¤.\n");
             }
         } else {
-            System.out.println("°ü¸®ÀÚ ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù. °ü¸®ÀÚ ¸ğµå Á¢±Ù ½ÇÆĞ!");
+            System.out.println("ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì ‘ì†í•´ ì£¼ì„¸ìš”.\n");
         }
     }
-    
-    public static void showMemberList(LibMemDAO memberDAO) {
-        System.out.println("\nµµ¼­°ü È¸¿ø ¸ñ·Ï ¢Ñ");
-        for (LibMemDTO member : memberDAO.getAllMembers()) {
-            System.out.println("ÀÌ¸§: " + member.getName() + "  |  ID: " + member.getMemberId());
+    public static void showMemberList(BookDAO memberDAO) {
+        System.out.println("\në„ì„œê´€ íšŒì› ëª©ë¡ â˜");
+        for (BookDTO member : memberDAO.getAllMembers()) {
+            System.out.println("ì´ë¦„: " + member.getName() + "  |  ID: " + member.getMemberId());
         }
 
         askToContinue(new Scanner(System.in));
     }
 
-    public static void deleteMember(LibMemDAO memberDAO, Scanner scanner) {
-        System.out.print("\n»èÁ¦ÇÒ È¸¿øÀÇ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+    public static void deleteMember(BookDAO memberDAO, Scanner scanner) {
+        System.out.print("\nì‚­ì œí•  íšŒì›ì˜ IDë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
         String memberId = scanner.nextLine();
         if (memberDAO.deleteMember(memberId)) {
-            System.out.println("---È¸¿ø »èÁ¦ ¿Ï·á!---");
+            System.out.println("---íšŒì› ì‚­ì œ ì™„ë£Œ!---\n");
         } else {
-            System.out.println("ÇØ´ç IDÀÇ È¸¿øÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            System.out.println("í•´ë‹¹ IDì˜ íšŒì›ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
         }
 
         askToContinue(scanner);
     }
 
     public static void askToContinue(Scanner scanner) {
-        System.out.print("\n°è¼ÓÇÏ½Ã°Ú½À´Ï±î? (y/n): ");
+        System.out.print("\nê³„ì†í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n): ");
         String input = scanner.nextLine();
-        if (!input.equalsIgnoreCase("y")) {
-            System.out.println("\n---- ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù ----");
+        if (input.equalsIgnoreCase("n")) {
+            System.out.println("\n---- í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤ ----");
             scanner.close();
             System.exit(0);
+        }else if(input.equalsIgnoreCase("y")) {
+        	
+        }else {
+        	System.out.println("ë‹¤ì‹œì…ë ¥í•´ì£¼ì„¸ìš”.");
+        	return;
         }
     }
+    
+        
 
     private static void printMenu() {
-        System.out.println("=== µµ¼­ °ü¸® ÇÁ·Î±×·¥ ===");
-        System.out.println("1. ÀüÃ¼ µµ¼­ ¸ñ·Ï Á¶È¸");
-        System.out.println("2. µµ¼­ Á¦¸ñÀ¸·Î °Ë»ö");
-        System.out.println("3. ÀúÀÚ ÀÌ¸§À¸·Î °Ë»ö");
-        System.out.println("4. ÇÁ·Î±×·¥ Á¾·á");
-        System.out.print("¸Ş´º ¼±ÅÃ: ");
+        System.out.println("â”Œâ”€â”€â”€â”€â”€LIBë„ì„œê´€ ì´ìš© ë©”ë‰´â”€â”€â”€â”€â”€â”€â”");
+        System.out.println("  1. ì „ì²´ ë„ì„œ ëª©ë¡ ì¡°íšŒ");
+        System.out.println("  2. ë„ì„œ ì œëª© ê²€ìƒ‰");
+        System.out.println("  3. ì €ì ì´ë¦„ ê²€ìƒ‰");
+        System.out.println("  4. ì±… ëŒ€ì—¬í•˜ê¸°");
+        System.out.println("  5. ì±… ë°˜ë‚©í•˜ê¸°");
+        System.out.println("  6. ì¢…ë£Œí•˜ê¸°");
+        System.out.println("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
+        System.out.print("ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”!  â˜  ");
     }
 
     private static void displayAllBooks() {
-        System.out.println("=== ÀüÃ¼ µµ¼­ ¸ñ·Ï ===");
+        System.out.println("\n\nâ”€â”€â”€â”€ ì „ì²´ ë„ì„œ ëª©ë¡ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n");
         String books = bookDAO.doRetrieve("1");
         System.out.println(books);
+        System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n");
     }
 
     private static void searchBooksByTitle() {
-        System.out.print("°Ë»öÇÒ µµ¼­ Á¦¸ñ ÀÔ·Â: ");
+        System.out.print("\nê²€ìƒ‰í•  ë„ì„œ ì œëª© ì…ë ¥: ");
         String title = scanner.nextLine();
-        System.out.println("=== °Ë»ö °á°ú ===");
+        System.out.println("\n===== ê²€ìƒ‰ ê²°ê³¼ =====");
         String books = bookDAO.doRetrieve("2", title);
         System.out.println(books);
     }
 
     private static void searchBooksByAuthor() {
-        System.out.print("°Ë»öÇÒ ÀúÀÚ ÀÌ¸§ ÀÔ·Â: ");
+        System.out.print("\nê²€ìƒ‰í•  ì €ì ì´ë¦„ ì…ë ¥: ");
         String author = scanner.nextLine();
-        System.out.println("=== °Ë»ö °á°ú ===");
+        System.out.println("\n===== ê²€ìƒ‰ ê²°ê³¼ =====");
         String books = bookDAO.doRetrieve("3", author);
         System.out.println(books);
     }
