@@ -12,27 +12,34 @@ public class BookMain {
     private static BookDAO memberDAO = new BookDAO();
 
     public static void main(String[] args) {
-    	boolean isLoggedIn = false;
+        boolean isLoggedIn = false;
+        boolean isAdmin = false;
 
-        while (!isLoggedIn) {    	
-            printLoginMenu();
-            String choice = scanner.nextLine();
+        while (!isLoggedIn || isAdmin) {
+            if (isAdmin) {
+                adminMode(bookDAO, scanner);
+                isAdmin = false;
+            } else {
+                printLoginMenu();
+                int choice = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (choice) {
-                case "1":
-                	registerMember(memberDAO, scanner);             	
-                    break;
-                case "2":
-                	isLoggedIn = login(); 
-                    break;
-                case "3":
-                    System.out.println("프로그램을 종료합니다.");
-                    System.exit(0);
-                case "4":
-                	adminMode(bookDAO, scanner);
-                default:
-                	System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
-                    break;           
+                switch (choice) {
+                    case 1:
+                        registerMember(memberDAO, scanner);
+                        break;
+                    case 2:
+                        isLoggedIn = login();
+                        break;
+                    case 3:
+                        System.out.println("프로그램을 종료합니다.");
+                        System.exit(0);
+                    case 4:
+                        isAdmin = true;
+                        break;
+                    default:
+                        // 빈 자리
+                }
             }
         }
         
@@ -55,20 +62,20 @@ public class BookMain {
                     searchBooksByAuthor();
                     break;
                 case 4:
-                	bookDAO.doRental();
-                	break;
+                    bookDAO.doRental();
+                    break;
                 case 5:
-                	bookDAO.doReturn();
-                	break;             	
+                    bookDAO.doReturn();
+                    break;
                 case 6:
-                	System.out.println("\n프로그램이 종료되었습니다.");
+                    System.out.println("\n프로그램이 종료되었습니다.");
                     exit = true;
                     break;
                 default:
                     System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
-        bookDAO.doSaveFile(); 
+        bookDAO.doSaveFile();
     }
 
     
@@ -97,10 +104,8 @@ public class BookMain {
             System.out.println("로그인 되었습니다.\n");
             return true;
 
-        }else {
-        	
-            System.out.println(" *아이디 또는 비밀번호가 일치하지 않습니다. 다시 로그인 해주세요.*\n");
-           
+        }else {   	
+            System.out.println(" *아이디 또는 비밀번호가 일치하지 않습니다. 다시 로그인 해주세요.*\n");         
         }
 		return false;
     }
@@ -158,38 +163,17 @@ public class BookMain {
     	boolean exitAdminMode = false;
         System.out.print("\n관리자 비밀번호를 입력하세요: ");
         String adminPassword = scanner.nextLine();
-
-        // 관리자 비밀번호가 맞으면
+        
+        // 관리자 비밀번호가 맞으면   
         if (adminPassword.equals("abc123")) {
-            System.out.println("\n관리자 모드로 접속하였습니다.");
-            System.out.println("1. 회원 전체 목록 출력");
-            System.out.println("2. 회원 삭제");
-            System.out.println("3. 로그아웃");
-            System.out.print("번호를 선택하세요!  ☞  ");
-            int adminChoice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (adminChoice) {
-                case 1:
-                    showMemberList(memberDAO);
-                    break;
-                case 2:
-                    deleteMember(memberDAO, scanner);
-                    break;
-                case 3:
-                    exitAdminMode = true;
-                    break;
-                default:
-                    System.out.println("잘못된 선택입니다.\n");
-            }
-            if (adminPassword.equals("abc123")) {
-                System.out.println("관리자 모드로 접속하였습니다.");
-                showAdminMenu(memberDAO, scanner);
-            } else {
-            	System.out.println("관리자 비밀번호가 틀렸습니다. 다시 접속해 주세요.\n");
+        	System.out.println("관리자 모드로 접속하였습니다.");
+            showAdminMenu(memberDAO, scanner);
+                
+        } else {
+            System.out.println("관리자 비밀번호가 틀렸습니다. 다시 접속해 주세요.\n");
         }
-    }
 }
+
     
     public static void showAdminMenu(BookDAO memberDAO, Scanner scanner) {
         boolean exitAdminMode = false;
@@ -198,26 +182,30 @@ public class BookMain {
             System.out.println("\n=== 관리자 모드 ===");
             System.out.println("1. 회원 전체 목록 출력");
             System.out.println("2. 회원 삭제");
+            System.out.println("3. 로그아웃");
             System.out.print("번호를 선택하세요!  ☞  ");
-            int adminChoice = scanner.nextInt();
-            scanner.nextLine();
+            String adminChoice = scanner.nextLine();
+
 
             switch (adminChoice) {
-                case 1:
+                case "1":
                     showMemberList(memberDAO);
                     break;
-                case 2:
+                case "2":
                     deleteMember(memberDAO, scanner);
+                    break;
+                case "3":
+                    exitAdminMode = true;
                     break;
                 default:
                     System.out.println("잘못된 선택입니다.");
+                    exitAdminMode = true;
             }
 
-            System.out.print("\n계속하시겠습니까? (y/n): ");
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("n")) {
-                exitAdminMode = true;
-            }
+      
+        }
+        if (exitAdminMode) {
+            System.out.println("관리자 모드에서 로그아웃되었습니다.");
         }
     }
     
