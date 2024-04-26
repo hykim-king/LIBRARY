@@ -48,26 +48,26 @@ public class BookMain {
         
         while (!exit) {
             printMenu();
-            int menuChoice = scanner.nextInt();
-            scanner.nextLine();
+            String menuChoice = scanner.nextLine();
+            
 
             switch (menuChoice) {
-                case 1:
+                case "1":
                     displayAllBooks();
                     break;
-                case 2:
+                case "2":
                     searchBooksByTitle();
                     break;
-                case 3:
+                case "3":
                     searchBooksByAuthor();
                     break;
-                case 4:
+                case "4":
                     bookDAO.doRental();
                     break;
-                case 5:
+                case "5":
                     bookDAO.doReturn();
                     break;
-                case 6:
+                case "6":
                     System.out.println("\n프로그램이 종료되었습니다.");
                     exit = true;
                     break;
@@ -199,7 +199,6 @@ public class BookMain {
                     break;
                 default:
                     System.out.println("잘못된 선택입니다.");
-                    exitAdminMode = true;
             }
 
       
