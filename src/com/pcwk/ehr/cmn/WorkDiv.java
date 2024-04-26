@@ -46,14 +46,14 @@ public interface WorkDiv<T> extends PLog {
 	 * @param param
 	 * @return  성공(1)/실패(0)
 	 */
-	public int doRental(T param);
+	public void doRental();
 
 	/**
 	 * 책 반납
 	 * @param param
 	 * @return 성공(1)/실패(0)
 	 */
-	public int doReturn(T param);
+	public void doReturn();
 	
 	/**
 	 * 객체 내용 파일에 저장(Json)

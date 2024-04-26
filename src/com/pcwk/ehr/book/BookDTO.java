@@ -4,56 +4,18 @@ import com.pcwk.ehr.cmn.DTO;
 
 public class BookDTO extends DTO {
 
-	private String bookName; //Ã¥ ÀÌ¸§
-	private String author;   //Ã¥ ÀúÀÚ
+	private String bookName; //ì±… ì´ë¦„
+	private String author;   //ì±… ì €ì
+	private boolean isAvailable; //ì±… ëŒ€ì—¬ ì—¬ë¶€
 	
 	private String name;
     private String memberID;
     private String password;
     
-    private String title;
-    private boolean isAvailable;
-
-    
-
-    public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getAuthor1() {
-		return author;
-	}
-
-	public void setAuthor1(String author) {
-		this.author = author;
-	}
-
-	public boolean isAvailable() {
-		return isAvailable;
-	}
-
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
-	}
-
-	public BookDTO(String title, String author, boolean isAvailable) {
-        this.title = title;
-        this.author = author;
-        this.isAvailable = isAvailable;
-    }
-
-    public String toString11() {
-        return "Book [Á¦¸ñ=" + title + ", author=" + author + ", isAvailable=" + isAvailable + "]";
-    }
-
-    // ±âº» »ı¼ºÀÚ
+    // ê¸°ë³¸ ìƒì„±ì
     public BookDTO() {}
 
-    // »ı¼ºÀÚ
+    // íšŒì› ìƒì„±ì
     public BookDTO(String name, String memberID, String password) {
         this.name = name;
         this.memberID = memberID;
@@ -61,7 +23,15 @@ public class BookDTO extends DTO {
     }
 
    
-    public String getName() {
+    public boolean isAvailable() {
+		return isAvailable;
+	}
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -73,7 +43,7 @@ public class BookDTO extends DTO {
         return password;
     }
 
-    // toString ¸Ş¼­µå
+    // toString ë©”ì„œë“œ
     @Override
     public String toString() {
         return "LibMemDTO [name=" + name + ", memberID=" + memberID + ", password=" + password + "]";
@@ -85,6 +55,13 @@ public class BookDTO extends DTO {
 		super();
 		this.bookName = bookName;
 		this.author = author;
+	}
+	
+	public BookDTO(String bookName, String author, boolean isAvailable) {
+		super();
+		this.bookName = bookName;
+		this.author = author;
+		this.isAvailable = isAvailable;
 	}
 
 	public String getBookName() {

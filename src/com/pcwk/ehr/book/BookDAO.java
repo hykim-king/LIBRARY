@@ -7,6 +7,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,13 +23,17 @@ public class BookDAO implements WorkDiv<BookDTO> {
 
 	private final String BOOK_URL = "https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=%EB%8F%84%EC%84%9C";
 	private final String FILE_NAME = "booklist.json";
-
+	private final String RENTAL_LIST = "rental.json";
+	private final String MEMBER_FILE_NAME = "member.json";
+	
 	private List<BookDTO> list=new ArrayList<BookDTO>();
-
+	private List<BookDTO> rentalList=new ArrayList<BookDTO>();
+	private List<BookDTO> memberList = new ArrayList<>();
+	Scanner scanner = new Scanner(System.in);
+	
 	@Override
 	public List<BookDTO> doRetrieve(DTO list) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.list; 
 	}
 
 	public List<BookDTO> getList() {
@@ -40,47 +46,93 @@ public class BookDAO implements WorkDiv<BookDTO> {
 
 	@Override
 	public int doSave(BookDTO param) {
-		// TODO Auto-generated method stub
-		return 0;
+		list.add(param); // ìƒˆë¡œìš´ ì±… ì¶”ê°€
+        return 0; 
 	}
 
-	@Override
-	public int doUpdate(BookDTO param) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int doDelete(BookDTO param) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (list.remove(param)) {
+            return 1; // ì„±ê³µ ì‹œ 1 ë°˜í™˜
+        }
+        return 0;
 	}
 
 	@Override
 	public BookDTO doSelectOne(BookDTO param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int doRental(BookDTO param) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int doReturn(BookDTO param) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int index = list.indexOf(param);
+        if (index != -1) {
+            return list.get(index); // í•´ë‹¹ ì±… ì •ë³´ ë°˜í™˜
+        }
+       
+        return null;
 	}
 	
-	// ÀüÃ¼ µµ¼­ ¸ñ·Ï Á¶È¸
+	@Override
+	public void doRental() {
+		System.out.print("ëŒ€ì—¬ í•˜ì‹¤ ì±…ì´ë¦„ì„ ì…ë ¥ í•˜ì„¸ìš”.>");
+		String name = scanner.nextLine();
+		for(BookDTO dto : list) {
+			if(dto.isAvailable()==false) {
+				if(dto.getBookName().equals(name)) {
+					dto.setAvailable(true);
+					list.remove(dto);
+//					LOG.debug(list.remove(dto));
+					rentalList.add(new BookDTO(dto.getBookName(), dto.getAuthor(), dto.isAvailable()));
+//					LOG.debug(rentalList.add(dto));
+					System.out.printf("'%s' ë„ì„œê°€ ëŒ€ì—¬ ë˜ì—ˆìŠµë‹ˆë‹¤.\n",dto.getBookName());
+					break;
+				}
+			}else {
+				System.out.printf("'%s' ë„ì„œëŠ” ëŒ€ì—¬ ì¤‘ì¸ ë„ì„œ ì…ë‹ˆë‹¤.\n",name);
+			}
+		}
+		doSaveFile();
+		
+	}
+	
+	@Override
+	public void doReturn() {
+		System.out.print("ë°˜ë‚© í•˜ì‹¤ ì±…ì´ë¦„ì„ ì…ë ¥ í•˜ì„¸ìš”.>");
+		String name = scanner.nextLine();
+		for(BookDTO dto : rentalList) {
+			if(dto.getBookName().equals(name)) {
+				dto.setAvailable(false);
+				rentalList.remove(dto);
+				list.add(new BookDTO(dto.getBookName(), dto.getAuthor(), dto.isAvailable()));
+				System.out.printf("'%s' ë„ì„œëŠ” ë°˜ë‚© ë˜ì—ˆìŠµë‹ˆë‹¤.%n",name);
+				break;
+			}else {
+				System.out.println("ë„ì„œ ì´ë¦„ì„ ë‹¤ì‹œ í™•ì¸í•´ ì£¼ì„¸ìš”.");
+			}
+		}
+		doSaveFile();
+		
+	}
+	
+	//íšŒì› ëª©ë¡ ì¡°íšŒ
+	public int saveMemberToFile() {
+	    int count = 0;
+	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	    try (FileWriter fw = new FileWriter(MEMBER_FILE_NAME)) {
+	        gson.toJson(memberList, fw);
+	        count = memberList.size();
+	    } catch (IOException e) {
+	        LOG.debug("IOException: " + e.getMessage());
+	        count = 0;
+	    }
+	    return count;
+	}
+	
+	// ì „ì²´ ë„ì„œ ëª©ë¡ ì¡°íšŒ
 	public String doRetrieve(String div){
 		StringBuilder sb = new StringBuilder();
 		
 		if(div.equals("1")) {
 			for(BookDTO book : this.list) {
-				String output = String.format("µµ¼­ ÀÌ¸§: %-40s \t\t\t\t\t ÀúÀÚ: %-20s\n", book.getBookName(), book.getAuthor());
+				String output = String.format("ë„ì„œ ì´ë¦„: %-40s \nì €ì: %-20s\n\n", book.getBookName(), book.getAuthor());
 				sb.append(output);
 			}
 		}
@@ -91,18 +143,18 @@ public class BookDAO implements WorkDiv<BookDTO> {
 	public String doRetrieve(String div, String search){
 		StringBuilder sb = new StringBuilder();		
 		
-		if(div.equals("2")) { //µµ¼­ ÀÌ¸§ °Ë»ö
+		if(div.equals("2")) { //ë„ì„œ ì´ë¦„ ê²€ìƒ‰
 			for(BookDTO book : this.list) {
 				if(book.getBookName().startsWith(search)) {
-					sb.append("µµ¼­ ÀÌ¸§: "+book.getBookName()+" / ÀúÀÚ : "+ book.getAuthor()+"\n");
+					sb.append("ë„ì„œ ì´ë¦„: "+book.getBookName()+" / ì €ì : "+ book.getAuthor()+"\n");
 				}
 			}
 		}
 		
-		if(div.equals("3")) { //ÀúÀÚ ÀÌ¸§ °Ë»ö
+		if(div.equals("3")) { //ì €ì ì´ë¦„ ê²€ìƒ‰
 			for(BookDTO book : this.list) {
 				if(book.getAuthor().startsWith(search)) {
-					String output = String.format("µµ¼­ ÀÌ¸§: %-20s  /t //// ÀúÀÚ: %-20s\n", book.getBookName(), book.getAuthor());
+					sb.append("ë„ì„œ ì´ë¦„: "+book.getBookName()+" / ì €ì : "+ book.getAuthor()+"\n");
 				}
 			}
 		}
@@ -110,15 +162,19 @@ public class BookDAO implements WorkDiv<BookDTO> {
 		
 		return sb.toString();
 	}
-
+		
+	
 	@Override
 	public int doSaveFile() {
 		int count = 0;
-		//PrettyPrintingµÈ Json»ı¼º
+		//PrettyPrintingëœ Jsonìƒì„±
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		try(FileWriter fw = new FileWriter(FILE_NAME)){
+		Gson rentalgson = new GsonBuilder().setPrettyPrinting().create();
+		try(FileWriter fw = new FileWriter(FILE_NAME);
+			FileWriter fw2 = new FileWriter(RENTAL_LIST)){
 			
 			gson.toJson(list, fw);
+			rentalgson.toJson(rentalList, fw2);
 			
 			count = list.size();
 			
@@ -127,15 +183,16 @@ public class BookDAO implements WorkDiv<BookDTO> {
 			count = 0;
 		}
 		
-		LOG.debug("doSaveFile count"+count);
+//		LOG.debug("doSaveFile count"+count);
 		return count;
 	}
+
 
 	@Override
 	public int doReadFile() {
 		try (FileReader fr = new FileReader(FILE_NAME)) {
 
-			// Gson°´Ã¼ »ı¼º
+			// Gsonê°ì²´ ìƒì„±
 			Gson gson = new Gson();
 			Type type = new TypeToken<List<BookDTO>>() {}.getType(); 
 
@@ -168,7 +225,7 @@ public class BookDAO implements WorkDiv<BookDTO> {
 					String name = bookName.text().trim();
 					String author = bookAuthor.text().trim();
 					
-					if (!(bookAuthor.text().trim()).equals("±³º¸¹®°í")) {
+					if (!(bookAuthor.text().trim()).equals("êµë³´ë¬¸ê³ ")) {
 							list.add( new BookDTO(name, author) );
 					}
 					
@@ -201,42 +258,43 @@ public class BookDAO implements WorkDiv<BookDTO> {
         userDatabase = new ArrayList<>();
     }
 
-    // »ç¿ëÀÚ Ãß°¡ ¸Ş¼­µå
+    // ì‚¬ìš©ì ì¶”ê°€ ë©”ì„œë“œ
     public void addMember(BookDTO user) {
         userDatabase.add(user);
+        memberList.add(user);
     }
 
-    // »ç¿ëÀÚ ¾ÆÀÌµğ Á¸Àç ¿©ºÎ È®ÀÎ ¸Ş¼­µå
+    // ì‚¬ìš©ì ì•„ì´ë”” ì¡´ì¬ ì—¬ë¶€ í™•ì¸ ë©”ì„œë“œ
     public boolean checkUserExistence(String userID) {
         for (BookDTO user : userDatabase) {
             if (user.getMemberId().equals(userID)) {
-                return true; // ¾ÆÀÌµğ°¡ Á¸ÀçÇÏ¸é true ¹İÈ¯
+                return true; // ì•„ì´ë””ê°€ ì¡´ì¬í•˜ë©´ true ë°˜í™˜
             }
         }
-        return false; // ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é false ¹İÈ¯
+        return false; // ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ false ë°˜í™˜
     }
 
-    // ºñ¹Ğ¹øÈ£ È®ÀÎ ¸Ş¼­µå
+    // ë¹„ë°€ë²ˆí˜¸ í™•ì¸ ë©”ì„œë“œ
     public boolean isPasswordCorrect(String userID, String password) {
         for (BookDTO user : userDatabase) {
             if (user.getMemberId().equals(userID)) {
-                return user.getPassword().equals(password); // ¾ÆÀÌµğ°¡ ÀÏÄ¡ÇÏ´Â »ç¿ëÀÚÀÇ ºñ¹Ğ¹øÈ£ È®ÀÎ
+                return user.getPassword().equals(password); // ì•„ì´ë””ê°€ ì¼ì¹˜í•˜ëŠ” ì‚¬ìš©ìì˜ ë¹„ë°€ë²ˆí˜¸ í™•ì¸
             }
         }
-        return false; // ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é false ¹İÈ¯
+        return false; // ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ false ë°˜í™˜
     }
 
     public boolean isMemberID(String username) {
         for (BookDTO user : userDatabase) {
             if (user.getMemberId().equals(username)) {
-                return true; // ¾ÆÀÌµğ°¡ Á¸ÀçÇÏ¸é true ¹İÈ¯
+                return true; // ì•„ì´ë””ê°€ ì¡´ì¬í•˜ë©´ true ë°˜í™˜
             }
         }
-        return false; // ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é false ¹İÈ¯
+        return false; // ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ false ë°˜í™˜
     }
     
     
-  //¡Ú¡Ú¡Ú°ü¸®ÀÚ¸ğµå
+  //â˜…â˜…â˜…ê´€ë¦¬ìëª¨ë“œ
     public boolean deleteMember(String memberId) {
         Iterator<BookDTO> iterator = userDatabase.iterator();
         while (iterator.hasNext()) {
@@ -251,6 +309,11 @@ public class BookDAO implements WorkDiv<BookDTO> {
 	public static List<BookDTO> getAllMembers() {
 		return userDatabase;
 	}
-	
+
+	@Override
+	public int doUpdate(BookDTO param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
