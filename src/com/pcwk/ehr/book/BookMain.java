@@ -231,20 +231,21 @@ public class BookMain {
     }
 
     public static void askToContinue(Scanner scanner) {
-        System.out.print("\n계속하시겠습니까? (y/n): ");
-        String input = scanner.nextLine();
-        if (input.equalsIgnoreCase("n")) {
-            System.out.println("\n---- 프로그램을 종료합니다 ----");
-            scanner.close();
-            System.exit(0);
-        }else if(input.equalsIgnoreCase("y")) {
+    	while (true) {
+    		System.out.print("\n계속하시겠습니까? (y/n): ");
+    		String input = scanner.nextLine();
+    		if (input.equalsIgnoreCase("n")) {
+    			System.out.println("\n---- 프로그램을 종료합니다 ----");
+    			scanner.close();
+    			System.exit(0);	
+    		} else if(input.equalsIgnoreCase("y")) {
+    			break;
+    		}else {
+    			System.out.println("다시 입력해주세요.");
         	
-        }else {
-        	System.out.println("다시입력해주세요.");
-        	return;
-        }
+    		}
+    	}
     }
-    
         
 
     private static void printMenu() {
